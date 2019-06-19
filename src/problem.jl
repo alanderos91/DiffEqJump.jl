@@ -83,7 +83,7 @@ function extend_problem(prob::DiffEqBase.AbstractDDEProblem,jumps)
     update_jumps!(du,u,p,t,length(u.u),jumps.variable_jumps...)
   end
   u0 = ExtendedJumpArray(prob.u0,[-randexp() for i in 1:length(jumps.variable_jumps)])
-  ramake(prob,f=DDEFunction{true}(jump_f),u0=u0)
+  remake(prob,f=DDEFunction{true}(jump_f),u0=u0)
 end
 
 # Not sure if the DAE one is correct: Should be a residual of sorts
